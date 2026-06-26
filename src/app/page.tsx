@@ -2,12 +2,14 @@ import { ArrowUpRight } from "lucide-react";
 import { bio, news, researchInterestText, publications, internships, awards } from "@/data/content";
 import type { ExperienceItem } from "@/data/content";
 
+const PUBLICATION_CARD_SHADOW = "1px 1px 43.3px -1px rgba(0, 0, 0, 0.05)";
+
 export default function HomePage() {
-  const scholarLink = bio.social.find((link) => link.platform === "google-scholar");
+  const cvLink = bio.cvLinks[0];
 
   return (
     <div className="min-h-screen">
-      <header className="sticky top-0 z-20 bg-[#e8ede5] py-3">
+      <header className="sticky top-0 z-20 bg-[#D1FAE5] py-3">
         <nav className="flex justify-end gap-8 px-4 text-sm font-medium text-slate-700 lg:px-[180px]">
           <a href="#publications" className="hover:text-slate-900">Publication</a>
           <a href="#internship" className="hover:text-slate-900">Internship</a>
@@ -16,11 +18,11 @@ export default function HomePage() {
       </header>
 
       <div className="px-4 py-8 lg:px-[180px] lg:py-12">
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-[260px_1fr] lg:gap-20">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-[400px_1fr] lg:gap-16">
           <aside className="space-y-10">
             <div className="flex flex-col items-start">
-              <div className="aspect-square w-[160px] overflow-hidden rounded-full bg-slate-200">
-                <div className="flex h-full w-full items-center justify-center text-4xl font-semibold text-slate-500">
+              <div className="aspect-square w-[200px] overflow-hidden rounded-full bg-slate-200 lg:w-[340px]">
+                <div className="flex h-full w-full items-center justify-center text-4xl font-semibold text-slate-500 lg:text-6xl">
                   {initialsFromName(bio.name)}
                 </div>
               </div>
@@ -32,35 +34,16 @@ export default function HomePage() {
                   {[bio.title, bio.affiliation].filter(Boolean).join(" · ")}
                 </p>
               )}
-              <div className="mt-5 flex flex-wrap gap-2">
+              {cvLink && (
                 <a
-                  href={`mailto:${bio.email}`}
-                  className="rounded-md border border-slate-300 px-3 py-1.5 text-xs text-slate-700 hover:bg-slate-50"
+                  href={cvLink.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-5 rounded-md border border-slate-300 px-4 py-1.5 text-xs text-slate-700 hover:bg-slate-50"
                 >
-                  Email
+                  CV
                 </a>
-                {bio.cvLinks.map((cv) => (
-                  <a
-                    key={cv.label}
-                    href={cv.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="rounded-md border border-slate-300 px-3 py-1.5 text-xs text-slate-700 hover:bg-slate-50"
-                  >
-                    {cv.label.replace(/\s*\(.*\)/, "")}
-                  </a>
-                ))}
-                {scholarLink && (
-                  <a
-                    href={scholarLink.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="rounded-md border border-slate-300 px-3 py-1.5 text-xs text-slate-700 hover:bg-slate-50"
-                  >
-                    Scholar
-                  </a>
-                )}
-              </div>
+              )}
             </div>
 
             <section id="news">
@@ -92,29 +75,30 @@ export default function HomePage() {
               <h2 className="mb-5 text-base font-semibold uppercase tracking-wider text-black">
                 Publication
               </h2>
-              <div className="space-y-6">
+              <div className="space-y-8">
                 {publications.map((pub) => (
                   <article
                     key={pub.title}
-                    className="flex items-start gap-6 rounded-lg bg-white p-5 shadow-md"
+                    className="flex aspect-[2088/440] w-full overflow-hidden rounded-[18px] bg-white"
+                    style={{ boxShadow: PUBLICATION_CARD_SHADOW }}
                   >
-                    <div className="w-[42%] flex-shrink-0">
-                      <div className="aspect-[4/3] w-full overflow-hidden rounded bg-slate-200">
-                        <div className="flex h-full w-full items-center justify-center text-sm text-slate-500">
-                          thumb
-                        </div>
+                    <div className="h-full w-[38%] flex-shrink-0 bg-slate-200">
+                      <div className="flex h-full w-full items-center justify-center text-sm text-slate-500">
+                        thumb
                       </div>
                     </div>
-                    <div className="min-w-0 flex-1 space-y-2">
-                      <p className="text-lg font-semibold leading-snug text-slate-900">{pub.title}</p>
-                      <p className="text-base text-slate-600">{pub.venue}</p>
-                      <p className="text-base text-slate-500">{pub.authors}</p>
+                    <div className="flex min-w-0 flex-1 flex-col justify-center gap-2 px-6 py-4 lg:px-8 lg:py-5">
+                      <p className="text-lg font-semibold leading-snug text-slate-900 lg:text-xl">
+                        {pub.title}
+                      </p>
+                      <p className="text-base text-slate-600 lg:text-lg">{pub.venue}</p>
+                      <p className="text-base text-slate-500 lg:text-lg">{pub.authors}</p>
                       {pub.link && (
                         <a
                           href={pub.link}
                           target="_blank"
                           rel="noreferrer"
-                          className="inline-flex items-center gap-1 text-sm text-slate-700 hover:underline"
+                          className="inline-flex items-center gap-1 text-sm text-slate-700 hover:underline lg:text-base"
                         >
                           Link <ArrowUpRight className="h-3.5 w-3.5" />
                         </a>
