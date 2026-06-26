@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { bio, news, researchInterestText, publications, internships, awards } from "@/data/content";
 import type { ExperienceItem } from "@/data/content";
 import { SocialIcon } from "@/components/social-icons";
@@ -21,11 +22,13 @@ export default function HomePage() {
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-[260px_1fr] lg:gap-20">
           <aside className="space-y-10">
             <div className="flex flex-col items-start">
-              <div className="aspect-square w-[160px] overflow-hidden rounded-full bg-slate-200">
-                <img
+              <div className="relative aspect-square w-[160px] overflow-hidden rounded-full bg-slate-200">
+                <Image
                   src="/publications/avatar.jpg"
                   alt={bio.name}
-                  className="h-full w-full object-cover"
+                  fill
+                  className="object-cover"
+                  unoptimized
                 />
               </div>
               <p className="mt-5 text-2xl font-semibold tracking-tight text-slate-900">
@@ -103,17 +106,19 @@ export default function HomePage() {
                 {publications.map((pub) => (
                   <article
                     key={pub.title}
-                    className="flex w-full overflow-hidden rounded-lg bg-white"
+                    className="flex w-full items-start overflow-hidden rounded-lg bg-white"
                     style={{ boxShadow: "1px 1px 43.3px -1px rgba(0,0,0,0.05)" }}
                   >
-                    <div className="w-[38%] flex-shrink-0 self-stretch overflow-hidden bg-slate-100">
-                      {pub.thumbnail ? (
-                        <img
+                    <div className="relative w-[38%] flex-shrink-0 self-stretch overflow-hidden bg-slate-100">
+                      {pub.thumbnail && (
+                        <Image
                           src={pub.thumbnail}
                           alt={pub.thumbnailAlt ?? pub.title}
-                          className="h-full w-full object-cover"
+                          fill
+                          className="object-cover"
+                          unoptimized
                         />
-                      ) : null}
+                      )}
                     </div>
                     <div className="min-w-0 flex-1 space-y-2 px-6 py-5 lg:px-8">
                       {pub.link ? (
@@ -172,4 +177,3 @@ export default function HomePage() {
     </div>
   );
 }
-
