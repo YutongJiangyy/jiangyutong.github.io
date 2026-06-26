@@ -106,16 +106,16 @@ export default function HomePage() {
                 {publications.map((pub) => (
                   <article
                     key={pub.title}
-                    className="flex w-full items-start overflow-hidden rounded-lg bg-white"
+                    className="grid w-full overflow-hidden rounded-lg border border-slate-100 bg-white sm:grid-cols-[minmax(220px,38%)_1fr]"
                     style={{ boxShadow: "1px 1px 43.3px -1px rgba(0,0,0,0.05)" }}
                   >
-                    <div className="relative w-[38%] flex-shrink-0 self-stretch overflow-hidden bg-slate-100">
+                    <div className="relative aspect-[16/9] min-h-[170px] overflow-hidden bg-slate-50 sm:h-full sm:min-h-[200px]">
                       {pub.thumbnail && (
                         <Image
                           src={pub.thumbnail}
                           alt={pub.thumbnailAlt ?? pub.title}
                           fill
-                          className="object-cover"
+                          className="object-contain p-3"
                           unoptimized
                         />
                       )}
