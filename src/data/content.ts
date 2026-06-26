@@ -141,7 +141,7 @@ export const publications: Publication[] = [
       "Bridging Visual Asymmetry: Exploring AI-Mediated Communication Support for Parents with Visual Impairments and Their Sighted Children in Outdoor Informal Learning",
     authors:
       "Yutong Jiang, Zixuan Zhang, Jiaying Xu, Qingyun Zheng, Qian Guo, Qinyang Wang, Qi Wang, Guanhong Liu",
-    venue: "CHI Conference on Human Factors in Computing Systems (CHI) 2026",
+    venue: "CHI 2026",
     year: "2026",
     badge: "CHI 2026",
     link: "https://doi.org/10.1145/3772318.3790604",
@@ -154,7 +154,7 @@ export const publications: Publication[] = [
       "PrivWeb: Unobtrusive and Content-aware Privacy Protection for Web Agents",
     authors:
       "Shuning Zhang*, Yutong Jiang*, Rongjun Ma, Yuting Yang, Mingyao Xu, Zhixin Huang, Xin Yi, Hewu Li (*equal contribution)",
-    venue: "CHI Conference on Human Factors in Computing Systems (CHI) 2026",
+    venue: "CHI 2026",
     year: "2026",
     badge: "CHI 2026",
     link: "https://doi.org/10.1145/3772318.3790919",
@@ -191,7 +191,7 @@ export const publications: Publication[] = [
     title:
       "City of Wander: Visualizing Scientific Literature for Knowledge Exploration Using Visual Metaphors",
     authors: "Guanhong Liu, Yutong Jiang, Xiaoke Yan, Nan Cao, Yang Shi",
-    venue: "CHI Extended Abstracts 2025",
+    venue: "CHI EA 2025",
     year: "2025",
     badge: "CHI EA 2025",
     link: "https://doi.org/10.1145/3706599.3720280",
