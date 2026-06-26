@@ -22,9 +22,11 @@ export default function HomePage() {
           <aside className="space-y-10">
             <div className="flex flex-col items-start">
               <div className="aspect-square w-[160px] overflow-hidden rounded-full bg-slate-200">
-                <div className="flex h-full w-full items-center justify-center text-4xl font-semibold text-slate-500">
-                  {initialsFromName(bio.name)}
-                </div>
+                <img
+                  src="/publications/avatar.jpg"
+                  alt={bio.name}
+                  className="h-full w-full object-cover"
+                />
               </div>
               <p className="mt-5 text-2xl font-semibold tracking-tight text-slate-900">
                 {bio.name}
@@ -104,10 +106,18 @@ export default function HomePage() {
                     className="flex aspect-[5/1] w-full overflow-hidden rounded-lg bg-white"
                     style={{ boxShadow: "1px 1px 43.3px -1px rgba(0,0,0,0.05)" }}
                   >
-                    <div className="h-full w-[38%] flex-shrink-0 bg-slate-200">
-                      <div className="flex h-full w-full items-center justify-center text-sm text-slate-500">
-                        thumb
-                      </div>
+                    <div className="h-full w-[38%] flex-shrink-0 overflow-hidden bg-slate-200">
+                      {pub.thumbnail ? (
+                        <img
+                          src={pub.thumbnail}
+                          alt={pub.thumbnailAlt ?? pub.title}
+                          className="h-full w-full object-cover"
+                        />
+                      ) : (
+                        <div className="flex h-full w-full items-center justify-center text-sm text-slate-400">
+                          No image
+                        </div>
+                      )}
                     </div>
                     <div className="flex min-w-0 flex-1 flex-col justify-center gap-2 px-6 py-4 lg:px-8">
                       {pub.link ? (
@@ -167,9 +177,3 @@ export default function HomePage() {
   );
 }
 
-function initialsFromName(name: string) {
-  const parts = name.split(" ").filter(Boolean);
-  if (parts.length === 0) return "?";
-  if (parts.length === 1) return parts[0]!.slice(0, 2).toUpperCase();
-  return (parts[0]![0] + parts[parts.length - 1]![0]).toUpperCase();
-}

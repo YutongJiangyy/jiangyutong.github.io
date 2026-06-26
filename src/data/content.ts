@@ -19,9 +19,7 @@ export interface Bio {
   location?: string;
   email: string;
   shortBio?: string;
-  /** 研究兴趣段落（右侧大块文字） */
   researchInterestText: string;
-  /** CV 链接，可多个（如中/英） */
   cvLinks: { label: string; href: string }[];
   social: SocialLink[];
 }
@@ -32,6 +30,14 @@ export interface NewsItem {
   text?: string;
 }
 
+export interface EducationItem {
+  school: string;
+  degree: string;
+  major: string;
+  period: string;
+  location: string;
+}
+
 export interface Publication {
   title: string;
   authors: string;
@@ -39,6 +45,7 @@ export interface Publication {
   year: string;
   thumbnailAlt?: string;
   link?: string;
+  thumbnail?: string;
   badge?: string;
 }
 
@@ -53,42 +60,71 @@ export interface ExperienceItem {
 }
 
 export const bio: Bio = {
-  name: "Your Name",
-  title: "Ph.D. Student in Human–Computer Interaction",
-  affiliation: "School of Computer Science, Example University",
-  location: "City, Country",
-  email: "you@example.edu",
+  name: "Yutong Jiang",
+  title: "M.Eng. Candidate in AI and Data Visualization",
+  affiliation: "College of Design and Innovation, Tongji University",
+  location: "Shanghai, China",
+  email: "2433545@tongji.edu.cn",
   shortBio:
     "I am a human–computer interaction researcher focusing on interactive systems, creativity support tools, and AI-augmented interfaces. My work combines qualitative studies with prototype-driven experimentation.",
   researchInterestText:
-    "My research focuses on human–computer interaction (HCI), creativity support tools, and human–AI collaboration. I am interested in interactive data visualization, design tools, and prototyping methods that combine qualitative studies with iterative design.",
+    "Seeking to leverage my background in interaction design to create AI-empowered educational solutions. I aim to solve practical problems by applying user-centric methodologies to discover unmet needs and translate them into innovative, impactful learning experiences.",
   cvLinks: [
-    { label: "CV (English)", href: "#" },
-    { label: "CV (中文)", href: "#" },
+    { label: "CV (English)", href: "/publications/CV-Jiang.pdf" },
   ],
   social: [
     {
       label: "Email",
-      href: "mailto:you@example.edu",
+      href: "mailto:2433545@tongji.edu.cn",
       platform: "email",
     },
     {
       label: "Google Scholar",
-      href: "https://scholar.google.com/",
+      href: "https://scholar.google.com/citations?hl=en&user=xmcbIsIAAAAJ",
       platform: "google-scholar",
     },
     {
       label: "GitHub",
-      href: "https://github.com/yourname",
+      href: "https://github.com/jiangyutong-eden",
       platform: "github",
     },
   ],
 };
 
+export const aboutMeText =
+  "I am a second-year master's student in Artificial Intelligence and Data Design at Tongji University. My work lies at the intersection of human-computer interaction, AI-mediated communication, and inclusive design, with a particular interest in educational technologies and collaborative learning experiences.";
+
 export const news: NewsItem[] = [
-  { date: "2024.1.2", title: "New paper accepted to CHI 2026.", text: "One paper on AI-assisted prototyping was accepted to CHI 2026." },
-  { date: "2025.10", title: "Research internship at Example Research Lab.", text: "Started a research internship, working on multimodal creativity support tools." },
-  { date: "2025.06", title: "Invited talk at Example HCI Seminar.", text: "Human-centered evaluation of generative models." },
+  {
+    date: "2026.03",
+    title: "Excited to share that two of our papers were accepted at CHI 2026.",
+  },
+  {
+    date: "2025.12",
+    title: "Attended SIGGRAPH Asia 2025 in Hong Kong.",
+  },
+  {
+    date: "2025.10",
+    title: "Attended CSCW 2025 in Bergen, Norway.",
+    text: "It was a wonderful opportunity to learn from inspiring work in the community.",
+  },
+];
+
+export const education: EducationItem[] = [
+  {
+    school: "Tongji University",
+    degree: "M.Eng.",
+    major: "Artificial Intelligence and Data Design",
+    period: "2024 – 2027",
+    location: "Shanghai, China",
+  },
+  {
+    school: "Tongji University",
+    degree: "B.A.",
+    major: "Media and Communication Design",
+    period: "2019 – 2024",
+    location: "Shanghai, China",
+  },
 ];
 
 export const researchInterests: string[] = [
@@ -102,71 +138,129 @@ export const researchInterests: string[] = [
 export const publications: Publication[] = [
   {
     title:
-      "CoSketch: Lightweight AI-Assisted Sketching Workflows for Early-Stage Interface Design",
-    authors: "Your Name, Collaborator A, Collaborator B",
-    venue: "CHI 2026 (to appear)",
+      "Bridging Visual Asymmetry: Exploring AI-Mediated Communication Support for Parents with Visual Impairments and Their Sighted Children in Outdoor Informal Learning",
+    authors: "Y. Jiang, Z. Zhang, J. Xu, Q. Zheng, Q. Guo, ... Q. Wang",
+    venue: "CHI Conference on Human Factors in Computing Systems (CHI) 2026",
     year: "2026",
     badge: "CHI 2026",
-    link: "https://example.com/paper",
-    thumbnailAlt: "A schematic of AI-assisted sketching for interface design.",
+    link: "",
+    thumbnail: "/publications/chi26_1.jpg",
+    thumbnailAlt:
+      "A distributed AI system supporting joint attention and communication between visually impaired parents and sighted children during outdoor informal learning.",
   },
   {
     title:
-      "PromptScaffold: Structuring Prompts to Support Novice Designers in Exploring the Generative Design Space",
-    authors: "Your Name, Collaborator C",
-    venue: "UIST 2025",
-    year: "2025",
-    badge: "UIST 2025",
-    link: "https://example.com/promptscaffold",
+      "PrivWeb: Unobtrusive and Content-aware Privacy Protection for Web Agents",
+    authors:
+      "S. Zhang*, Y. Jiang*, R. Ma, Y. Yang, M. Xu, Z. Huang, ... H. Li (*equal contribution)",
+    venue: "CHI Conference on Human Factors in Computing Systems (CHI) 2026",
+    year: "2026",
+    badge: "CHI 2026",
+    link: "",
+    thumbnail: "/publications/chi26_2.jpg",
+    thumbnailAlt:
+      "A privacy-aware system that detects and manages sensitive information during web-agent interactions.",
   },
   {
     title:
-      "Understanding How Practitioners Appropriate Large Language Models in Everyday Productivity Workflows",
-    authors: "Your Name, Collaborator D, Collaborator E",
-    venue: "CSCW 2025",
+      "When Stars Shine through Silence: Affective Visualization as Empowerment for Victims of Subway Harassment",
+    authors: "Y. Jiang, X. Yan, C. Zheng, Y. Shi, Q. Chen, N. Cao",
+    venue: "SIGGRAPH Asia Posters 2025",
     year: "2025",
-    badge: "CSCW 2025",
+    badge: "SIGGRAPH Asia Posters 2025",
+    link: "https://dl.acm.org/doi/full/10.1145/3757374.3771477",
+    thumbnail: "/publications/siggraph25.png",
+    thumbnailAlt:
+      "An affective visualization system highlighting emotional experiences of subway harassment victims.",
+  },
+  {
+    title:
+      "I Can Only Guess Where She's Looking: Challenges and Design Strategies for Supporting Outdoor Informal Learning Between Parents with Visual Impairments and Their Sighted Children",
+    authors:
+      "Y. Jiang*, Q. Zheng*, Z. Zhang*, Q. Guo*, J. Xu*, S. Xu, G. Liu (*equal contribution)",
+    venue: "CSCW Companion 2025",
+    year: "2025",
+    badge: "CSCW Companion 2025",
+    link: "https://dl.acm.org/doi/full/10.1145/3715070.3749238",
+    thumbnail: "/publications/cscw25.jpg",
+    thumbnailAlt:
+      "A study investigating communication and attention challenges in informal learning between visually impaired parents and sighted children.",
+  },
+  {
+    title:
+      "City of Wander: Visualizing Scientific Literature for Knowledge Exploration Using Visual Metaphors",
+    authors: "G. Liu, Y. Jiang, X. Yan, N. Cao, Y. Shi",
+    venue: "CHI Extended Abstracts 2025",
+    year: "2025",
+    badge: "CHI EA 2025",
+    link: "https://dl.acm.org/doi/full/10.1145/3706599.3720280",
+    thumbnail: "/publications/chiea25.png",
+    thumbnailAlt:
+      "A visualization system using metaphor-driven layouts to explore scientific literature.",
   },
 ];
 
 export const experiences: ExperienceItem[] = [
   {
     type: "internship",
-    title: "Research Intern, HCI & Productivity",
-    organization: "Example Research Lab",
-    location: "Remote",
-    period: "Summer 2025",
-    description:
-      "Designed and evaluated interactive prototypes for AI-augmented productivity workflows with knowledge workers.",
+    title: "Technology Intern",
+    organization: "Disney",
+    location: "Shanghai, China",
+    period: "2024.02 - 2024.05",
   },
   {
     type: "internship",
-    title: "Research Intern, Human-AI Interaction",
-    organization: "Example AI Lab",
-    location: "City, Country",
-    period: "Summer 2024",
-    description:
-      "Ran mixed-methods studies to understand how non-expert users adapt to generative interfaces in creative domains.",
+    title: "Product Operation Intern",
+    organization: "Feishu, Bytedance",
+    location: "Shanghai, China",
+    period: "2023.12 - 2024.02",
+  },
+  {
+    type: "internship",
+    title: "Visualization Design Intern",
+    organization: "iDVX Lab, Tongji University",
+    location: "Shanghai, China",
+    period: "2023.06 - 2024.09",
   },
   {
     type: "award",
-    title: "Best Paper Honorable Mention",
-    organization: "ACM CHI",
+    title: "1st Place – Visual Data Storytelling Contest",
+    organization: "IEEE PacificVis",
     year: "2025",
-    description:
-      "For work on interactive tools that scaffold novice designers in exploring generative design spaces.",
   },
   {
     type: "award",
-    title: "Graduate Research Fellowship",
-    organization: "Example Funding Agency",
+    title: "2nd Place – Design Factory Global Challenge",
+    organization: "Design Factory Global Network",
+    year: "2025",
+  },
+  {
+    type: "award",
+    title: "Annual Selected Works",
+    organization: "China Data Content Conference",
+    year: "2025",
+  },
+  {
+    type: "award",
+    title: "National Scholarship",
+    organization: "Ministry of Education of China",
+    year: "2025",
+  },
+  {
+    type: "award",
+    title: "Outstanding Graduate",
+    organization: "Shanghai Municipal Education Commission",
     year: "2024",
+  },
+  {
+    type: "award",
+    title: "National Scholarship",
+    organization: "Ministry of Education of China",
+    year: "2022",
   },
 ];
 
 export const internships: ExperienceItem[] = experiences.filter((e) => e.type === "internship");
 export const awards: ExperienceItem[] = experiences.filter((e) => e.type === "award");
 
-/** 研究兴趣段落（用于右侧大块文字） */
 export const researchInterestText: string = bio.researchInterestText;
-
