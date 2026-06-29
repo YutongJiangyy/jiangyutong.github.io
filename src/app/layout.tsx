@@ -8,7 +8,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Your Name – Academic Homepage",
+  title: "Yutong Jiang 蒋雨彤 - Homepage",
   description: "Minimal, data-driven academic homepage.",
 };
 
@@ -25,4 +25,3 @@ export default function RootLayout({
     </html>
   );
 }
-
