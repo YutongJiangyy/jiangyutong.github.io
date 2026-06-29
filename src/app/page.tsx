@@ -133,8 +133,8 @@ export default function HomePage() {
                       ) : (
                         <p className="text-base font-semibold leading-relaxed text-slate-900">{pub.title}</p>
                       )}
-                      <p className="text-base leading-relaxed text-slate-600">{pub.venue}</p>
-                      <p className="text-base leading-relaxed text-slate-500">{pub.authors}</p>
+                      <p className="text-sm leading-relaxed text-slate-600">{pub.venue}</p>
+                      <p className="text-sm leading-relaxed text-slate-500">{pub.authors}</p>
                     </div>
                   </article>
                 ))}
